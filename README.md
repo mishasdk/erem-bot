@@ -21,3 +21,16 @@
 5. Run bot start script
 
 ```bash tools/run_erem_bot.sh```
+
+
+### Commands
+
+```
+
+start - Миша рад знакомству!
+help - Миша всегда поможет!
+roll - Миша решит любой спор!
+naruto - Миша поделится мудростью!
+who_is_dumb - Миша решит кто виноват!
+
+```
