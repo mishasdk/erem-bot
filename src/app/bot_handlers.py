@@ -22,7 +22,7 @@ class BotHandlers:
     def _start(self, update, context):
         self._save_username(update)
 
-        update.message.reply_text('Привет всем, ребята!!!')
+        update.message.reply_text('Здарова всем, ребята!!!')
 
     def _help(self, update, context):
         self._save_username(update)
