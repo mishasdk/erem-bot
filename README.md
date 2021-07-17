@@ -34,7 +34,7 @@
 
 3. Run docker image
 
-```docker run -e TG_TOKEN_EREM_BOT=${TG_TOKEN_EREM_BOT} mishasdk/erem-bot-debug```
+```docker run -e TG_TOKEN_EREM_BOT=${TG_TOKEN_EREM_BOT} mishasdk/erem-bot```
 
 ### Commands
 
