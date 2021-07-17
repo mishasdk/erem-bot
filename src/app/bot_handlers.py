@@ -12,8 +12,7 @@ class BotHandlers:
             CommandHandler('start', self._start),
             CommandHandler('help', self._help),
             CommandHandler('roll', self._roll),
-            CommandHandler('naruto', self._naruto),
-            MessageHandler(Filters.text, self._message)
+            CommandHandler('naruto', self._naruto)
         )
 
     def handlers(self):
@@ -32,18 +31,3 @@ class BotHandlers:
         quote = self._naruto_quotes_provider.provide()
         message = f"{quote['text']}\n\n©{quote['author']}"
         update.message.reply_text(message)
-
-    def _message(self, update, context):
-        text = update.message.text
-        if text == '/Кто лох?':
-            update.message.reply_text('Есть тут один)))')
-        else:
-            update.message.reply_text(
-                Utils.choose_random((
-                    "Круто!",
-                    "Еее бой ))!1",
-                    "Превосходно",
-                    "Замечательно!",
-                    "Ахахахахах ллоооол) ))00)0"
-                ))
-            )
