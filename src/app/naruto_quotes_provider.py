@@ -20,7 +20,7 @@ class NarutoQuotesProvider:
 			self._fetch_from_page(i)
 
 	def _fetch_from_page(self, page):
-		responce = requests.get(self._url, params={'page': randint(0, page)})
+		responce = requests.get(self._url, params={'page': page})
 		soup = BeautifulSoup(responce.text, 'lxml')
 
 		for node in soup.findAll('div', {'class': 'node__content'}):
