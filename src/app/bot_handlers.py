@@ -13,7 +13,8 @@ class BotHandlers:
             CommandHandler('help', self._help),
             CommandHandler('roll', self._roll),
             CommandHandler('naruto', self._naruto),
-            CommandHandler('who_is_dumb', self._poll_dumb)
+            CommandHandler('who_is_dumb', self._poll_dumb),
+            CommandHandler('hello', self._hello)
         )
 
     def handlers(self):
@@ -61,6 +62,9 @@ class BotHandlers:
             allows_multiple_answers=True,
             open_period=300
         )
+
+    def _hello(self, update, context):
+        update.message.reply_text('Привет!')
 
     def _save_username(self, update):
         chat_id = update.effective_chat.id        
