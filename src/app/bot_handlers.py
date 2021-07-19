@@ -64,7 +64,15 @@ class BotHandlers:
         )
 
     def _hello(self, update, context):
-        update.message.reply_text('Привет!')
+        chat_id = update.effective_chat.id
+        user = update.effective_user
+        username = user.username
+        firstname = user.first_name
+        usernames = self._users_storage.get_usernames(chat_id)
+        if not username in self._users_storage.get_usernames(chat_id):
+            context.bot.send_message(chat_id, f'Я с незнакомцами, не знакомлюсь!')
+        else:
+            update.message.reply_text('Здарова ' + f'{firstname}!' + ' Как делишки?))0)')
 
     def _save_username(self, update):
         chat_id = update.effective_chat.id        
