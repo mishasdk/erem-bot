@@ -1,11 +1,12 @@
+from animes_provider import AnimesProvider
 from naruto_quotes_provider import NarutoQuotesProvider
 from random import randint
-from telegram.ext import CommandHandler, MessageHandler, Filters
+from telegram.ext import CommandHandler
 from users_storage import UsersStorage 
-from anime import get_anime
 
 
 class BotHandlers:
+    _animes_provider = AnimesProvider()
     _naruto_quotes_provider = NarutoQuotesProvider()
     _users_storage = UsersStorage()
 
@@ -78,10 +79,12 @@ class BotHandlers:
             update.message.reply_text('Здарова ' + f'{firstname}!' + ' Как делишки?))0)')
 
     def _ask_anime(self, update, context):
-        anime_info = get_anime()
-        update.message.reply_text('Посмотрел тут недавно такое аниме, просто сказка! Зацени, брат!).\n' 
-            + f"{anime_info['name']} \nРейтинг: {anime_info['score']} \n{anime_info['image']}")
-
+        anime_info = self._animes_provider.provide()
+        text = "Посмотрел тут недавно такое аниме, просто сказка! Зацени, брат!).\n"
+        text += f"{anime_info['name']}\n"
+        text += f"Рейтинг: {anime_info['score']}\n"
+        text += f"{anime_info['image']}"
+        update.message.reply_text(text)
 
     def _save_username(self, update):
         chat_id = update.effective_chat.id        
