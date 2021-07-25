@@ -16,6 +16,7 @@ class ShikimoryClient:
             'name': anime['russian'], 
             'image': self._base_url + anime['image']['original'],
             'score': anime['score'], 
+            'url': self._base_url + anime['url'],
         } for anime in json]
 
     def _get(self, url, params):
