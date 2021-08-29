@@ -4,7 +4,7 @@ from random import randint
 from telegram.ext import CommandHandler
 from users_storage import UsersStorage 
 from utils import Utils
-
+from random import normalvariate
 
 class BotHandlers:
     _animes_provider = AnimesProvider()
@@ -20,6 +20,7 @@ class BotHandlers:
             CommandHandler('who_is_dumb', self._poll_dumb),
             CommandHandler('hello', self._hello),
             CommandHandler('ask_anime', self._ask_anime),
+            CommandHandler('cock_size', self._cock_size)
         )
 
     def handlers(self):
@@ -89,6 +90,10 @@ class BotHandlers:
 
         update.message.reply_markdown_v2(text, disable_web_page_preview=True)
         context.bot.send_photo(chat_id, anime_info['image'])
+
+    def _cock_size(self, update, context):
+        size = abs(normalvariate(15, 5))
+        update.message.reply_text(f'Размер твоего хера {size} см')
 
     def _save_username(self, update):
         chat_id = update.effective_chat.id        
