@@ -92,7 +92,7 @@ class BotHandlers:
         context.bot.send_photo(chat_id, anime_info['image'])
 
     def _cock_size(self, update, context):
-        size = abs(normalvariate(15, 5))
+        size = round(abs(normalvariate(15, 5)))
         update.message.reply_text(f'Размер твоего хера {size} см')
 
     def _save_username(self, update):
